@@ -42,6 +42,7 @@ extern "C" {
         void(*put_jpeg_image)(struct DMessage *This, DJpegimage * jpegimage); /*!< Appel à la fonction d_message_put_jpeg_image(). */
         void(*put_position)(struct DMessage *This, DPosition * p); /*!< Appel à la fonction d_message_put_position(). */
         void(*put_battery_level)(struct DMessage *This, DBattery * b); /*!< Appel à la fonction d_message_put_battery_level(). */
+        void(*put_version)(struct DMessage *This, int versionMajeure, int versionMineure); /*!< Appel à la fonction d_message_put_version(). */
 
         void(*mission_terminate)(struct DMessage *This, int missionId); /*!< Appel à la fonction d_message_mission_terminate(). */
 
