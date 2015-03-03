@@ -255,7 +255,7 @@ RobotStatus d_robot_manage_cmd(struct DRobot * This, const char *cmd, char *ans)
             cmd_succeed = 1;
             p_ans--;
             *p_ans = 0;
-            checksum = verify_checksum(ans);
+            checksum = verify_checksum((unsigned char *)ans);
         }
     }
     if (nb_retry >= MAX_RETRY) {
@@ -293,7 +293,7 @@ RobotStatus d_robot_manage_cmd(struct DRobot * This, const char *cmd, char *ans)
 }
 
 RobotStatus d_robot_open_device(struct DRobot * This) {
-    struct termios options;
+    // struct termios options;
 
     int fd; /* File descriptor for the port */
     fd = open(RobotComFilename, O_RDWR | O_NOCTTY | O_NDELAY);
