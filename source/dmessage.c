@@ -31,6 +31,7 @@ static void d_message_init(DMessage *This) {
     This->put_jpeg_image = d_message_put_jpeg_image;
     This->put_position = d_message_put_position;
     This->put_battery_level = d_message_put_battery_level;
+    This->put_version = d_message_put_version;
     This->get_payload = d_message_get_payload;
     This->get_payload_size = d_message_get_payload_size;
     This->mission_terminate = d_message_mission_terminate;
