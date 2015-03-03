@@ -71,7 +71,8 @@ void d_camera_close(DCamera *This) {
     This->mIndice = -1;
 }
 
-void d_camera_get_frame(DCamera *This, DImage * img) {
+int d_camera_get_frame(DCamera *This, DImage * img) {
+    int ret = 0;
     IplImage * frame;
     //frame = cvQueryFrame( This->mCapture );
     int i = 0;
@@ -82,9 +83,11 @@ void d_camera_get_frame(DCamera *This, DImage * img) {
     frame = cvRetrieveFrame(This->mCapture, 0);
     
     if (!frame){
-        img = NULL;
+        ret = 1;
     } else {
         d_image_set_ipl(img, frame);
     }
+
+    return ret;
 }
 

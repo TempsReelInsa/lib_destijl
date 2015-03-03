@@ -30,7 +30,7 @@ extern "C" {
         void(*open) (struct DCamera *This); /*!< Appel de la fonction d_camera_open(). */
         void(*open_number) (struct DCamera *This, int number); /*!< Appel de la fonction d_camera_open_number(). */
         void(*close) (struct DCamera *This); /*!< Appel de la fonction d_camera_close(). */
-        void(*get_frame) (struct DCamera *This, DImage * img); /*!< Appel de la fonction d_camera_get_frame(). */
+        int(*get_frame) (struct DCamera *This, DImage * img); /*!< Appel de la fonction d_camera_get_frame(). */
         CvCapture* mCapture; /*!< Pointeur sur un obbejt Capture (OpenCV)*/
         int mIndice; /*!< Numéro de la camera. */
     } DCamera;
@@ -85,7 +85,7 @@ extern "C" {
      * \param This Auto-adressage de la camera sur laquelle faire la capture.
      * \param img Pointeur sur l'image capturée.
      */
-    void d_camera_get_frame(DCamera *This, DImage *img);
+    int d_camera_get_frame(DCamera *This, DImage * img);
 
 #ifdef __cplusplus
 }
