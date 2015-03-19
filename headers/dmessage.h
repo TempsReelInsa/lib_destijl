@@ -60,6 +60,8 @@ extern "C" {
         char *data; /*!< Buffer contenant les données du message.*/
     } DMessage;
 
+    void d_message_init(DMessage*);
+
     /**
      * \fn DMessage *This d_new_message(void)
      * \brief Instanciation de l'objet DMessage

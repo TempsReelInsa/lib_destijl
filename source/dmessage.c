@@ -12,9 +12,7 @@
 #include "../headers/dmessage.h"
 #include "../headers/dtools.h"
 
-static void d_message_init(DMessage*);
-
-static void d_message_init(DMessage *This) {
+void d_message_init(DMessage *This) {
     This->data = NULL;
     This->dataType = MESSAGE_TYPE_UNKNOWN;
     This->len = 0;
