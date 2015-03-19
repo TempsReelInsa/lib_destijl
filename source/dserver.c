@@ -181,7 +181,6 @@ int d_server_receive(DServer *This, DMessage *message) {
     int size = 0;
     int retour = 0;
 
-    printf("Attente d'un message\n");
     retour = recv(This->socketID, &type, 1, 0); /* Lecture du type */
     //printf("retour:%d type:%c\n",retour, type);
     if (retour > 0) {
