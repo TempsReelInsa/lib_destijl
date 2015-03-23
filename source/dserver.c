@@ -147,11 +147,9 @@ int d_server_open(DServer *This, char * port) {
 }
 
 void d_server_close(DServer *This) {
-    close(This->socketID);
     This->active = 0;
+    close(This->socketID);
     printf("Server closed\n");
-
-
 }
 
 int d_server_send(DServer *This, DMessage *message) {
