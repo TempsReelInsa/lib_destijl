@@ -49,20 +49,24 @@ void d_camera_free(DCamera *This) {
     free(This);
 }
 
-void d_camera_open(DCamera *This) {
-    d_camera_open_number(This, This->mIndice);
+int d_camera_open(DCamera *This) {
+    return d_camera_open_number(This, This->mIndice);
 }
 
-void d_camera_open_number(DCamera *This, int number) {
+int d_camera_open_number(DCamera *This, int number)
+{
     // Création de la capture
+    int ret = 0;
     This->mCapture = cvCreateCameraCapture(number);
 
     //TODO : Envoyer une erreur
     if (!This->mCapture) {
-        printf("Impossible d'ouvrir la camera\n");
+        ret = -1;
     } else {
         This->mIndice = number;
     }
+
+    return ret;
 }
 
 void d_camera_close(DCamera *This) {

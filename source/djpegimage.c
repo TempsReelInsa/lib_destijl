@@ -49,8 +49,12 @@ void d_jpegimage_release(DJpegimage *This) {
 void d_jpegimage_compress(DJpegimage *This, DImage *image){
     d_jpegimage_release(This);
     int jpeg_params[] = {CV_IMWRITE_JPEG_QUALITY, 80, 0};
-    This->data = cvEncodeImage(".jpeg", image->get_ipl(image), jpeg_params);
-    //This->data = cvEncodeImage(".jpeg", image->get_ipl(image), NULL);
+    IplImage *ipl_img = image->get_ipl(image);
+
+    if(ipl_img != NULL)
+    {
+        This->data = cvEncodeImage(".jpeg", ipl_img, jpeg_params);
+    }
 }
 
 CvMat* d_jpegimage_get_data(DJpegimage *This){

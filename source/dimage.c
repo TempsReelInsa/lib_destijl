@@ -100,8 +100,12 @@ void d_image_free(DImage *This) {
     free(This);
 }
 
-void d_image_release(DImage *This) {
-    if (This->myiplimg != NULL) cvReleaseImage(&(This->myiplimg));
+void d_image_release(DImage *This)
+{
+    if (This->myiplimg != NULL)
+    {
+            cvReleaseImage(&(This->myiplimg));
+    }
 }
 
 void d_image_set_ipl(DImage *This, IplImage *image) {

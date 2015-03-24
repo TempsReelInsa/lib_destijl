@@ -27,8 +27,8 @@ extern "C" {
     typedef struct DCamera {
         void(*free) (struct DCamera *This); /*!< Appel à la fonction d_camera_free(). */
         void(*print) (struct DCamera *This); /*!< Appel de la fonction d_camera_print(). */
-        void(*open) (struct DCamera *This); /*!< Appel de la fonction d_camera_open(). */
-        void(*open_number) (struct DCamera *This, int number); /*!< Appel de la fonction d_camera_open_number(). */
+        int(*open) (struct DCamera *This); /*!< Appel de la fonction d_camera_open(). */
+        int(*open_number) (struct DCamera *This, int number); /*!< Appel de la fonction d_camera_open_number(). */
         void(*close) (struct DCamera *This); /*!< Appel de la fonction d_camera_close(). */
         int(*get_frame) (struct DCamera *This, DImage * img); /*!< Appel de la fonction d_camera_get_frame(). */
         CvCapture* mCapture; /*!< Pointeur sur un obbejt Capture (OpenCV)*/
@@ -61,7 +61,7 @@ extern "C" {
      * \brief Ouverture de la camera dont le numéro est contenu dans mIndice (par défaut -1).
      * \param This Auto-adressage de la camera à ouvrir.
      */
-    void d_camera_open(DCamera *This);
+    int d_camera_open(DCamera *This);
     
     
     /**
@@ -70,7 +70,7 @@ extern "C" {
      * \param This Auto-adressage de la camera à ouvrir.
      * \param number Numéro de la camera à ouvrir.
      */
-    void d_camera_open_number(DCamera *This, int number);
+    int d_camera_open_number(DCamera *This, int number);
 
     /**
      * \fn void d_camera_close(DCamera *This)
