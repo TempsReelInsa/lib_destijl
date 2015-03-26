@@ -6,8 +6,8 @@
  * \date 12 décembre 2011
  */
 
-#ifndef MISSION_H
-#define MISSION_H
+#ifndef D_MISSION_H
+#define D_MISSION_H
 
 #include "./dconstantes.h"
 #include "./dmessage.h"

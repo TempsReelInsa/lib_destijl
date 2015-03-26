@@ -6,8 +6,8 @@
  * \date 29 novembre 2011
  */
 
-#ifndef POSITION_H
-#define POSITION_H
+#ifndef D_POSITION_H
+#define D_POSITION_H
 
 #include <stdlib.h>
 #include <stdio.h>
