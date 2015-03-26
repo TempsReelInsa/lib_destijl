@@ -356,9 +356,13 @@ RobotStatus d_robot_start_insecurely(struct DRobot * This) {
     return This->status;
 }
 
-RobotStatus d_robot_stop(struct DRobot * This) {
-    sprintf(buffer_out, "%c\r", ROBOT_CMD_RESET);
-    This->status = (d_robot_manage_cmd(This, buffer_out, buffer_in));
+RobotStatus d_robot_stop(struct DRobot * This)
+{
+    if(This->status == STATUS_OK)
+    {
+        sprintf(buffer_out, "%c\r", ROBOT_CMD_RESET);
+        This->status = (d_robot_manage_cmd(This, buffer_out, buffer_in));
+    }
     return This->status;
 }
 

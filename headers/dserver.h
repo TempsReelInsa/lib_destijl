@@ -28,12 +28,15 @@ extern "C" {
     typedef struct DServer {
         void(*free) (struct DServer *This); /*!< Appel à la fonction d_server_free(). */
         void(*print) (struct DServer *This); /*!< Appel de la fonction d_server_print(). */
-        int(*open) (struct DServer *This, char * port); /*!< Appel de la fonction d_server_open(). */
+        int(*bind) (struct DServer *This, char *port);
+        int(*accept)(struct DServer *this);
         void(*close) (struct DServer *This); /*!< Appel de la fonction d_server_close(). */
         int(*send) (struct DServer *This, DMessage *message); /*!< Appel de la fonction d_server_send(). */
         int(*receive) (struct DServer *This, DMessage *message); /*!< Appel de la fonction d_server_receive(). */
         int(*is_active) (struct DServer *This); /*!< Appel de la fonction d_server_is_active(). */
-        int socketID; /*!< Identifiant du serveur. */
+        void(*close_client) (struct DServer *This);
+        int sock_serv;
+        int sock_client;
         int active; /*!< Etat du serveur. */
     } DServer;
 
@@ -43,6 +46,9 @@ extern "C" {
      * \return Nouvelle instance de type DServer.
      */
     DServer* d_new_server(void);
+    int d_server_bind(DServer *This, char *port);
+    int d_server_accept(DServer *This);
+    void d_server_close_client(DServer *This);
 
     /**
      * \fn void d_server_free(DServer *This)
