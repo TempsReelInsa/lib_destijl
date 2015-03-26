@@ -511,6 +511,7 @@ int d_image_find_position_points(IplImage* roiBinarized, CvPoint2D32f spots[3]) 
     cvReleaseMemStorage(&storage);
     if (cmpt != 3) {
         printf("ERROR spots\n");
+        printf("cmpt = %d\n", cmpt);
         return 0;
     } else {
         return 1;
